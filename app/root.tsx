@@ -26,6 +26,13 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <nav aria-label="main navigation">
+          <div></div>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+        </nav>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
