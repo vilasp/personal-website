@@ -9,6 +9,7 @@ import {
   Link,
 } from '@remix-run/react'
 
+import {AiFillGithub} from 'react-icons/ai'
 import styles from './tailwind.css'
 
 export const meta: MetaFunction = () => ({
@@ -58,6 +59,19 @@ export default function App() {
               </div>
             </Link>
           </div>
+          <a
+            href="https://github.com/vilasp"
+            rel="external"
+            className="flex-none w-16 px-2"
+          >
+            <div className="flex flex-col justify-center">
+              <AiFillGithub
+                size="2em"
+                title="logo to vilasp github"
+                className="hover:text-highlight transition-color"
+              />
+            </div>
+          </a>
         </nav>
         <Outlet />
         <ScrollRestoration />
