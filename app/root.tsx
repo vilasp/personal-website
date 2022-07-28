@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link,
 } from '@remix-run/react'
 
 import styles from './tailwind.css'
@@ -25,13 +26,38 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <nav aria-label="main navigation">
-          <div></div>
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
+      <body className="bg-primary text-quaternary">
+        <nav
+          aria-label="main navigation"
+          className="flex items-center w-screen h-16 fixed bg-primary"
+        >
+          <div className="flex-none w-16 px-2">Logo</div>
+          <div className="grow font-sans text-sm uppercase font-semibold">
+            <Link
+              to="/playground"
+              className="group inline-flex h-16 mr-2 hover:border-y-4 hover:border-highlight transition-border duration-300 ease-in-out"
+            >
+              <div className="flex flex-col justify-center">
+                <p>Playground</p>
+              </div>
+            </Link>
+            <Link
+              to="/projects"
+              className="group inline-flex h-16 mr-2 hover:border-y-4 hover:border-highlight  transition-border duration-300 ease-in-out"
+            >
+              <div className="flex flex-col justify-center">
+                <p>Projects</p>
+              </div>
+            </Link>
+            <Link
+              to="/about"
+              className="group inline-flex h-16 mr-2 hover:border-y-4 hover:border-highlight  transition-border duration-300 ease-in-out"
+            >
+              <div className="flex flex-col justify-center">
+                <p>About</p>
+              </div>
+            </Link>
+          </div>
         </nav>
         <Outlet />
         <ScrollRestoration />
