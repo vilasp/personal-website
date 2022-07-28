@@ -27,7 +27,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-primary text-quaternary">
+      <body className="bg-primary text-quaternary overscroll-none">
         <nav
           aria-label="main navigation"
           className="flex items-center w-screen h-16 fixed bg-primary"
