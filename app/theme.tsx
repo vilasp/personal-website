@@ -11,7 +11,7 @@ function getSystemTheme() {
   return 'light'
 }
 
-function setThemelocalStorage(theme: supportedThemes) {
+function setThemeLocalStorage(theme: supportedThemes) {
   localStorage.theme = theme
 }
 
@@ -28,22 +28,22 @@ function Theme() {
     if (localStorage.theme === 'system' || !('theme' in localStorage)) {
       const systemTheme = getSystemTheme()
       setThemeTailwind(systemTheme)
-      setThemelocalStorage('system')
+      setThemeLocalStorage('system')
       return systemTheme
     } else if (localStorage.theme === 'dark') {
       setThemeTailwind('dark')
-      setThemelocalStorage('dark')
+      setThemeLocalStorage('dark')
       return 'dark'
     } else {
       setThemeTailwind('light')
-      setThemelocalStorage('light')
+      setThemeLocalStorage('light')
       return 'light'
     }
   })
 
   const setTheme = (theme: supportedThemes) => {
     setThemeTailwind(theme)
-    setThemelocalStorage(theme)
+    setThemeLocalStorage(theme)
     setThemeLocal(theme)
   }
 
