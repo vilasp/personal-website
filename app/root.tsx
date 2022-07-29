@@ -8,8 +8,11 @@ import {
   ScrollRestoration,
   Link,
 } from '@remix-run/react'
+import {ClientOnly} from 'remix-utils'
 
+import {Theme, ThemeFallback} from './theme'
 import {AiFillGithub} from 'react-icons/ai'
+
 import styles from './tailwind.css'
 
 export const meta: MetaFunction = () => ({
@@ -37,12 +40,12 @@ export default function App() {
               <path
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="butt"
-                stroke-linejoin="miter"
-                stroke-opacity="1"
-                stroke-miterlimit="4"
-                stroke-dasharray="none"
+                strokeWidth="1.5"
+                strokeLinecap="butt"
+                strokeLinejoin="miter"
+                strokeOpacity="1"
+                strokeMiterlimit="4"
+                strokeDasharray="none"
                 d="M.155 9.449S5.243.739 9.603.309C13.455-.068 2.641 33.333.31 50.032-1.37 62.056 28.69 19.598 35.16.465c1.121-3.315-5.053 64.72 1.549 49.566l6.815-15.644c3.114-7.148-23.389-.155-23.389-.155"
                 transform="translate(-.04 -.175)"
               />
@@ -74,10 +77,17 @@ export default function App() {
               </div>
             </Link>
           </div>
+          <div className="flex-none px-4">
+            <div className="flex flex-col justify-center">
+              <ClientOnly fallback={<ThemeFallback />}>
+                <Theme />
+              </ClientOnly>
+            </div>
+          </div>
           <a
             href="https://github.com/vilasp"
             rel="external"
-            className="flex-none w-16 px-2"
+            className="flex-none px-4"
           >
             <div className="flex flex-col justify-center">
               <AiFillGithub
