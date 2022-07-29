@@ -10,6 +10,15 @@ module.exports = {
         quaternary: '#6F4C5B',
         highlight: '#7EB5A6',
       },
+      keyframes: {
+        pop: {
+          '0%': {transform: 'scale(0)'},
+          '100%': {transform: 'scale(1)'},
+        },
+      },
+      animation: {
+        pop: 'pop 0.3s linear',
+      },
     },
   },
   plugins: [],

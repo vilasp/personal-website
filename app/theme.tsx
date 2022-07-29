@@ -53,14 +53,14 @@ function Theme() {
         <FiSun
           size="1.5em"
           title="light mode"
-          className="hover:text-highlight transition-color"
+          className="hover:text-highlight transition-color animate-pop"
           onClick={() => setTheme('light')}
         />
       ) : (
         <BsMoonStars
           size="1.5em"
           title="dark mode"
-          className="hover:text-highlight transition-color"
+          className="hover:text-highlight transition-color animate-pop"
           onClick={() => setTheme('dark')}
         />
       )}
@@ -69,7 +69,13 @@ function Theme() {
 }
 
 function ThemeFallback() {
-  return <BsMoonStars size="1.5em" title="dark mode" />
+  return (
+    <BsMoonStars
+      size="1.5em"
+      title="dark mode"
+      className="setThemeLocalStorage"
+    />
+  )
 }
 
 export {Theme, ThemeFallback}
