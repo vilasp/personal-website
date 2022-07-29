@@ -78,9 +78,9 @@ export default function App() {
             </Link>
           </div>
           <div className="flex-none px-4">
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center cursor-pointer">
               <ClientOnly fallback={<ThemeFallback />}>
-                <Theme />
+                {() => <Theme />}
               </ClientOnly>
             </div>
           </div>
