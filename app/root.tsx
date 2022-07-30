@@ -77,25 +77,21 @@ export default function App() {
               </div>
             </Link>
           </div>
-          <div className="flex-none px-4">
-            <div className="flex flex-col justify-center cursor-pointer">
-              <ClientOnly fallback={<ThemeFallback />}>
-                {() => <Theme />}
-              </ClientOnly>
-            </div>
+          <div className="flex-none px-4 cursor-pointer">
+            <ClientOnly fallback={<ThemeFallback />}>
+              {() => <Theme />}
+            </ClientOnly>
           </div>
           <a
             href="https://github.com/vilasp"
             rel="external"
             className="flex-none px-4"
           >
-            <div className="flex flex-col justify-center">
-              <AiFillGithub
-                size="2em"
-                title="logo to vilasp github"
-                className="hover:text-highlight transition-color"
-              />
-            </div>
+            <AiFillGithub
+              size="2em"
+              title="logo to vilasp github"
+              className="hover:text-highlight transition-color"
+            />
           </a>
         </nav>
         <Outlet />
