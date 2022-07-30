@@ -30,10 +30,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-primary text-quaternary overscroll-none">
+      <body className="bg-primary dark:bg-quaternary text-quaternary dark:text-primary overscroll-none">
         <nav
           aria-label="main navigation"
-          className="flex items-center w-screen h-16 fixed bg-primary"
+          className="flex items-center w-screen h-16 fixed bg-primary dark:bg-quaternary"
         >
           <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
             <svg viewBox="0 0 43.868 52.193" xmlns="http://www.w3.org/2000/svg">
