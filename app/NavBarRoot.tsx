@@ -30,16 +30,14 @@ function NavBarMobile() {
   return (
     <nav
       aria-label="main navigation"
-      className="flex items-center w-screen h-16 fixed bg-primary dark:bg-quaternary"
+      className="mx-auto flex items-center justify-between w-screen h-16 fixed bg-primary dark:bg-quaternary"
     >
       <NavBarSignature />
-      <div className="grow flex flex-row-reverse items-center font-sans text-sm uppercase font-semibold pl-8">
+      <div className="flex items-center font-sans text-sm uppercase font-semibold pl-8">
         <div className="inline-flex  px-4 cursor-pointer">
-          <GiHamburgerMenu
-            size="2em"
-            title="logo to vilasp github"
-            className="hover:text-highlight transition-color"
-          />
+          <ClientOnly fallback={<ThemeFallback />}>
+            {() => <Theme />}
+          </ClientOnly>
         </div>
         <a
           href="https://github.com/vilasp"
@@ -53,9 +51,11 @@ function NavBarMobile() {
           />
         </a>
         <div className="inline-flex  px-4 cursor-pointer">
-          <ClientOnly fallback={<ThemeFallback />}>
-            {() => <Theme />}
-          </ClientOnly>
+          <GiHamburgerMenu
+            size="2em"
+            title="logo to vilasp github"
+            className="hover:text-highlight transition-color"
+          />
         </div>
       </div>
     </nav>
