@@ -26,6 +26,27 @@ function NavBarSignature() {
   )
 }
 
+function NavbarCustomElements() {
+  return (
+    <>
+      <div className="inline-flex  px-4 cursor-pointer">
+        <ClientOnly fallback={<ThemeFallback />}>{() => <Theme />}</ClientOnly>
+      </div>
+      <a
+        href="https://github.com/vilasp"
+        rel="external"
+        className="inline-flex  px-4"
+      >
+        <AiFillGithub
+          size="2em"
+          title="logo to vilasp github"
+          className="hover:text-highlight transition-color"
+        />
+      </a>
+    </>
+  )
+}
+
 function NavBarMobile() {
   return (
     <nav
@@ -34,22 +55,7 @@ function NavBarMobile() {
     >
       <NavBarSignature />
       <div className="flex items-center font-sans text-sm uppercase font-semibold pl-8">
-        <div className="inline-flex  px-4 cursor-pointer">
-          <ClientOnly fallback={<ThemeFallback />}>
-            {() => <Theme />}
-          </ClientOnly>
-        </div>
-        <a
-          href="https://github.com/vilasp"
-          rel="external"
-          className="inline-flex  px-4"
-        >
-          <AiFillGithub
-            size="2em"
-            title="logo to vilasp github"
-            className="hover:text-highlight transition-color"
-          />
-        </a>
+        <NavbarCustomElements />
         <div className="inline-flex  px-4 cursor-pointer">
           <GiHamburgerMenu
             size="2em"
@@ -95,20 +101,7 @@ function NavBarDesktop() {
           </div>
         </Link>{' '}
       </div>
-      <div className="inline-flex  px-4 cursor-pointer">
-        <ClientOnly fallback={<ThemeFallback />}>{() => <Theme />}</ClientOnly>
-      </div>
-      <a
-        href="https://github.com/vilasp"
-        rel="external"
-        className="inline-flex  px-4"
-      >
-        <AiFillGithub
-          size="2em"
-          title="logo to vilasp github"
-          className="hover:text-highlight transition-color"
-        />
-      </a>
+      <NavbarCustomElements />
     </nav>
   )
 }
