@@ -47,34 +47,34 @@ function Theme() {
     setThemeLocal(theme)
   }
 
-  return (
-    <>
-      {theme === 'dark' ? (
-        <FiSun
-          size="1.5em"
-          title="light mode"
-          className="hover:text-highlight transition-color animate-pop"
-          onClick={() => setTheme('light')}
-        />
-      ) : (
-        <BsMoonStars
-          size="1.5em"
-          title="dark mode"
-          className="hover:text-highlight transition-color animate-pop"
-          onClick={() => setTheme('dark')}
-        />
-      )}
-    </>
+  return theme === 'dark' ? (
+    <button onClick={() => setTheme('light')}>
+      <FiSun
+        size="1.5em"
+        title="light mode"
+        className="hover:text-highlight transition-color animate-pop"
+      />
+    </button>
+  ) : (
+    <button onClick={() => setTheme('dark')}>
+      <BsMoonStars
+        size="1.5em"
+        title="dark mode"
+        className="hover:text-highlight transition-color animate-pop"
+      />
+    </button>
   )
 }
 
 function ThemeFallback() {
   return (
-    <BsMoonStars
-      size="1.5em"
-      title="dark mode"
-      className="setThemeLocalStorage"
-    />
+    <button>
+      <BsMoonStars
+        size="1.5em"
+        title="dark mode"
+        className="setThemeLocalStorage"
+      />
+    </button>
   )
 }
 
