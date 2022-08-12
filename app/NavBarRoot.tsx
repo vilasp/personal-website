@@ -4,6 +4,14 @@ import {ClientOnly} from 'remix-utils'
 import {Theme, ThemeFallback} from './theme'
 import {AiFillGithub} from 'react-icons/ai'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import {
+  Menu,
+  MenuItems,
+  MenuButton,
+  MenuPopover,
+  MenuLink,
+  useMenuButtonContext,
+} from '@reach/menu-button'
 
 function NavBarSignature() {
   return (
@@ -47,6 +55,35 @@ function NavbarCustomElements() {
   )
 }
 
+function NavBarMobileMenuList() {
+  const {isExpanded} = useMenuButtonContext()
+
+  return isExpanded ? (
+    <MenuPopover
+      className="z-50"
+      position={r => ({
+        top: `calc(${Number(r?.top) + Number(r?.height)}px + 2.25rem)`, // 2.25 rem = py-9 from navbar
+        left: 0,
+        bottom: 0,
+        right: 0,
+      })}
+      style={{display: 'block'}}
+    >
+      <MenuItems>
+        <MenuLink as={Link} to="/playground">
+          Playground
+        </MenuLink>
+        <MenuLink as={Link} to="/projects">
+          Playground
+        </MenuLink>
+        <MenuLink as={Link} to="/about">
+          Playground
+        </MenuLink>
+      </MenuItems>
+    </MenuPopover>
+  ) : null
+}
+
 function NavBarMobile() {
   return (
     <nav
@@ -56,13 +93,16 @@ function NavBarMobile() {
       <NavBarSignature />
       <div className="flex items-center font-sans text-sm uppercase font-semibold pl-8">
         <NavbarCustomElements />
-        <div className="inline-flex  px-4 cursor-pointer">
-          <GiHamburgerMenu
-            size="2em"
-            title="logo to vilasp github"
-            className="hover:text-highlight transition-color"
-          />
-        </div>
+        <Menu>
+          <MenuButton className="inline-flex  px-4">
+            <GiHamburgerMenu
+              size="2em"
+              title="logo to vilasp github"
+              className="hover:text-highlight transition-color"
+            />
+          </MenuButton>
+          <NavBarMobileMenuList />
+        </Menu>
       </div>
     </nav>
   )
