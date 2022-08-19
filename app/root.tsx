@@ -7,7 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import NavBarRoot from './NavBarRoot'
+import NavBarRoot from './NavBarMain'
 
 import styles from './tailwind.css'
 
