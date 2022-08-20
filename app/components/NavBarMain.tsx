@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {Link} from '@remix-run/react'
 import {ClientOnly} from 'remix-utils'
-import {Theme, ThemeFallback} from './theme'
+import {Theme, ThemeFallback} from '../theme'
 import {AiFillGithub} from 'react-icons/ai'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {
@@ -58,7 +58,9 @@ function NavBarSignature() {
       opacity: 1,
       pathLength: 1,
       fill: 'rgba(255, 255, 255, 0)',
-      strokeWidth: '0.5em',
+      strokeWidth: '0.4em',
+      strokeLinejoin: 'round',
+      strokeLinecap: 'round',
     },
   }
 
@@ -70,7 +72,7 @@ function NavBarSignature() {
         className="stroke-current"
       >
         <motion.path
-          d="M0 0 L30 100 L60 0 L90 100 M60 50 L60 60"
+          d="M0 0 L30 100 L60 0 L90 100 M60 70 L60 80"
           variants={icon}
           initial="hidden"
           animate="visible"
