@@ -12,6 +12,7 @@ import {
   MenuLink,
   useMenuButtonContext,
 } from '@reach/menu-button'
+import {motion} from 'framer-motion'
 
 const LINKS = {
   projects: {
@@ -29,22 +30,55 @@ const LINKS = {
 }
 
 function NavBarSignature() {
+  // return (
+  //   <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
+  //     <svg viewBox="0 0 43.868 52.193" xmlns="http://www.w3.org/2000/svg">
+  //       <path
+  //         fill="none"
+  //         stroke="currentColor"
+  //         strokeWidth="1.5"
+  //         strokeLinecap="butt"
+  //         strokeLinejoin="miter"
+  //         strokeOpacity="1"
+  //         strokeMiterlimit="4"
+  //         strokeDasharray="none"
+  //         d="M.155 9.449S5.243.739 9.603.309C13.455-.068 2.641 33.333.31 50.032-1.37 62.056 28.69 19.598 35.16.465c1.121-3.315-5.053 64.72 1.549 49.566l6.815-15.644c3.114-7.148-23.389-.155-23.389-.155"
+  //         transform="translate(-.04 -.175)"
+  //       />
+  //     </svg>
+  //   </Link>
+  // )
+  const icon = {
+    hidden: {
+      opacity: 0,
+      pathLength: 0,
+      fill: 'rgba(255, 255, 255, 0)',
+    },
+    visible: {
+      opacity: 1,
+      pathLength: 1,
+      fill: 'rgba(255, 255, 255, 0)',
+      strokeWidth: '0.5em',
+    },
+  }
+
   return (
     <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
-      <svg viewBox="0 0 43.868 52.193" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          strokeOpacity="1"
-          strokeMiterlimit="4"
-          strokeDasharray="none"
-          d="M.155 9.449S5.243.739 9.603.309C13.455-.068 2.641 33.333.31 50.032-1.37 62.056 28.69 19.598 35.16.465c1.121-3.315-5.053 64.72 1.549 49.566l6.815-15.644c3.114-7.148-23.389-.155-23.389-.155"
-          transform="translate(-.04 -.175)"
+      <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        className="stroke-current"
+      >
+        <motion.path
+          d="M0 0 L30 100 L60 0 L90 100 M60 50 L60 60"
+          variants={icon}
+          initial="hidden"
+          animate="visible"
+          transition={{
+            default: {duration: 2, ease: 'easeInOut'},
+          }}
         />
-      </svg>
+      </motion.svg>
     </Link>
   )
 }
@@ -89,7 +123,7 @@ function NavBarMobileMenuList() {
     <MenuPopover
       className="z-50 bg-quaternary dark:bg-primary text-primary dark:text-quaternary w-screen"
       position={r => ({
-        top: `4em`, // 2.25 rem = py-9 from navbar
+        top: `4em`,
         left: 0,
         bottom: 0,
         right: 0,
