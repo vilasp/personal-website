@@ -30,29 +30,14 @@ const LINKS = {
 }
 
 function NavBarSignature() {
-  // return (
-  //   <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
-  //     <svg viewBox="0 0 43.868 52.193" xmlns="http://www.w3.org/2000/svg">
-  //       <path
-  //         fill="none"
-  //         stroke="currentColor"
-  //         strokeWidth="1.5"
-  //         strokeLinecap="butt"
-  //         strokeLinejoin="miter"
-  //         strokeOpacity="1"
-  //         strokeMiterlimit="4"
-  //         strokeDasharray="none"
-  //         d="M.155 9.449S5.243.739 9.603.309C13.455-.068 2.641 33.333.31 50.032-1.37 62.056 28.69 19.598 35.16.465c1.121-3.315-5.053 64.72 1.549 49.566l6.815-15.644c3.114-7.148-23.389-.155-23.389-.155"
-  //         transform="translate(-.04 -.175)"
-  //       />
-  //     </svg>
-  //   </Link>
-  // )
   const icon = {
     hidden: {
       opacity: 0,
       pathLength: 0,
       fill: 'rgba(255, 255, 255, 0)',
+      strokeWidth: '0.4em',
+      strokeLinejoin: 'round',
+      strokeLinecap: 'round',
     },
     visible: {
       opacity: 1,
@@ -132,9 +117,15 @@ function NavBarMobileMenuList() {
       })}
       style={{display: 'block'}}
     >
-      <MenuItems>
+      <MenuItems className="flex flex-col space-between px-4 py-2 divide-y-3">
         {Object.values(LINKS).map(({name, href}) => (
-          <MenuLink as={Link} to={href} key={name} id={name}>
+          <MenuLink
+            as={Link}
+            to={href}
+            key={name}
+            id={name}
+            className="p-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color"
+          >
             {name}
           </MenuLink>
         ))}
@@ -165,7 +156,7 @@ function NavBar() {
       className="flex items-center justify-between w-screen h-16 fixed bg-quaternary dark:bg-primary text-primary dark:text-quaternary"
     >
       <NavBarSignature />
-      <div className="hidden sm:flex sm:grow sm:items-center font-sans text-sm uppercase font-semibold pl-8">
+      <div className="hidden sm:flex sm:grow sm:items-center pl-8 font-sans uppercase font-semibold text-sm">
         {Object.values(LINKS).map(({name, href}) => (
           <Link
             to={href}
