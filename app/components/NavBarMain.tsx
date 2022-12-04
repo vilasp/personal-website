@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {Link} from '@remix-run/react'
-import {ClientOnly} from 'remix-utils'
-import {Theme, ThemeFallback} from '../theme'
+import {Theme} from '../theme'
 import {AiFillGithub} from 'react-icons/ai'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {
