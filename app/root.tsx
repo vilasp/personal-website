@@ -1,4 +1,4 @@
-import type {MetaFunction, LinksFunction} from '@remix-run/node'
+import type {MetaFunction, LinksFunction, LoaderFunction} from '@remix-run/node'
 import {
   Links,
   LiveReload,
@@ -6,10 +6,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react'
 import NavBarMain from './components/NavBarMain'
-
 import styles from './tailwind.css'
+import {getSession} from './sessions'
+import type {THEMES} from './utils/theme'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -19,9 +21,24 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => [{rel: 'stylesheet', href: styles}]
 
+export type LoaderData = {
+  theme: keyof typeof THEMES | null
+}
+
+export const loader: LoaderFunction = async ({request}) => {
+  const session = await getSession(request.headers.get('Cookie'))
+  const data: LoaderData = {
+    theme: session.get('theme'),
+  }
+
+  return data
+}
+
 export default function App() {
+  const {theme} = useLoaderData<LoaderData>()
+
   return (
-    <html lang="en">
+    <html lang="en" className={`${theme ?? 'light'}`}>
       <head>
         <Meta />
         <Links />

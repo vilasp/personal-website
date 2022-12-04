@@ -73,9 +73,7 @@ function NavBarSignature() {
 function NavbarCustomElements() {
   return (
     <>
-      <div className="inline-flex  px-4 cursor-pointer">
-        <ClientOnly fallback={<ThemeFallback />}>{() => <Theme />}</ClientOnly>
-      </div>
+      <Theme />
       <a
         href="https://github.com/vilasp"
         rel="external"
