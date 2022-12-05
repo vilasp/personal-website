@@ -26,7 +26,7 @@ export type LoaderData = {
 function Theme() {
   const persistTheme = useFetcher()
   const {theme: loaderTheme} = useMatches()?.[0]?.data as LoaderData
-  const [animations, setAntimations] = useState(false)
+  const [animations, setAnimations] = useState(false)
   const [theme, setThemeLocal] = useState<keyof typeof THEMES>(() => {
     if (loaderTheme === 'system') {
       const systemTheme = getSystemTheme()
@@ -42,14 +42,13 @@ function Theme() {
     setThemeTailwind(theme)
     setThemeLocal(theme)
     persistTheme.submit({theme}, {action: 'action/theme', method: 'post'})
-    setAntimations(true)
+    setAnimations(true)
   }
 
   return theme === 'dark' ? (
     <button
       onClick={() => setTheme('light')}
       className="inline-flex items-center px-4"
-      // onAnimationEnd={() => setAntimations(false)}
     >
       <FiSun
         size="1.5em"
@@ -63,7 +62,6 @@ function Theme() {
     <button
       onClick={() => setTheme('dark')}
       className="inline-flex items-center px-4"
-      // onAnimationEnd={() => setAntimations(false)}
     >
       <BsMoonStars
         size="1.5em"

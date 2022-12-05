@@ -43,7 +43,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-primary dark:bg-quaternary text-quaternary dark:text-primary overscroll-none">
+      <body className="bg-primary dark:bg-quaternary text-quaternary dark:text-primary overscroll-none transition-colors duration-400">
         <NavBarMain />
         <Outlet />
         <ScrollRestoration />
