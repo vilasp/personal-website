@@ -28,22 +28,24 @@ const LINKS = {
   },
 }
 
-const icon = {
-  hidden: {
-    opacity: 0,
-    pathLength: 0,
-    fill: 'rgba(255, 255, 255, 0)',
-    strokeWidth: '0.4em',
-    strokeLinejoin: 'round',
-    strokeLinecap: 'round',
-  },
-  visible: {
-    opacity: 1,
-    pathLength: 1,
-    fill: 'rgba(255, 255, 255, 0)',
-    strokeWidth: '0.4em',
-    strokeLinejoin: 'round',
-    strokeLinecap: 'round',
+const variants = {
+  signature: {
+    hidden: {
+      opacity: 0,
+      pathLength: 0,
+      fill: 'rgba(255, 255, 255, 0)',
+      strokeWidth: '0.4em',
+      strokeLinejoin: 'round',
+      strokeLinecap: 'round',
+    },
+    visible: {
+      opacity: 1,
+      pathLength: 1,
+      fill: 'rgba(255, 255, 255, 0)',
+      strokeWidth: '0.4em',
+      strokeLinejoin: 'round',
+      strokeLinecap: 'round',
+    },
   },
 }
 
@@ -57,7 +59,7 @@ function NavBarSignature() {
       >
         <motion.path
           d="M0 0 L30 100 L60 0 L90 100 M60 70 L60 80"
-          variants={icon}
+          variants={variants.signature}
           initial="hidden"
           animate="visible"
           transition={{
