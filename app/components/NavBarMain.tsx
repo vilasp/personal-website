@@ -28,26 +28,26 @@ const LINKS = {
   },
 }
 
-function NavBarSignature() {
-  const icon = {
-    hidden: {
-      opacity: 0,
-      pathLength: 0,
-      fill: 'rgba(255, 255, 255, 0)',
-      strokeWidth: '0.4em',
-      strokeLinejoin: 'round',
-      strokeLinecap: 'round',
-    },
-    visible: {
-      opacity: 1,
-      pathLength: 1,
-      fill: 'rgba(255, 255, 255, 0)',
-      strokeWidth: '0.4em',
-      strokeLinejoin: 'round',
-      strokeLinecap: 'round',
-    },
-  }
+const icon = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+    fill: 'rgba(255, 255, 255, 0)',
+    strokeWidth: '0.4em',
+    strokeLinejoin: 'round',
+    strokeLinecap: 'round',
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    fill: 'rgba(255, 255, 255, 0)',
+    strokeWidth: '0.4em',
+    strokeLinejoin: 'round',
+    strokeLinecap: 'round',
+  },
+}
 
+function NavBarSignature() {
   return (
     <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
       <motion.svg
