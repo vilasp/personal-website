@@ -1,8 +1,8 @@
+import {useMatches, useFetcher} from '@remix-run/react'
 import {useState} from 'react'
 import {FiSun} from 'react-icons/fi'
 import {BsMoonStars} from 'react-icons/bs'
-
-type supportedThemes = 'dark' | 'light' | 'system'
+import type {THEMES} from './utils/theme'
 
 function getSystemTheme() {
   if (window?.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -11,11 +11,7 @@ function getSystemTheme() {
   return 'light'
 }
 
-function setThemeLocalStorage(theme: supportedThemes) {
-  localStorage.theme = theme
-}
-
-function setThemeTailwind(theme: supportedThemes) {
+function setThemeTailwind(theme: keyof typeof THEMES) {
   if (theme === 'dark') {
     document.documentElement.classList.add('dark')
   } else {
@@ -23,59 +19,59 @@ function setThemeTailwind(theme: supportedThemes) {
   }
 }
 
+export type LoaderData = {
+  theme: keyof typeof THEMES | null
+}
+
 function Theme() {
-  const [theme, setThemeLocal] = useState<supportedThemes>(() => {
-    if (localStorage.theme === 'system' || !('theme' in localStorage)) {
+  const persistTheme = useFetcher()
+  const {theme: loaderTheme} = useMatches()?.[0]?.data as LoaderData
+  const [animations, setAnimations] = useState(false)
+  const [theme, setThemeLocal] = useState<keyof typeof THEMES>(() => {
+    if (loaderTheme === 'system') {
       const systemTheme = getSystemTheme()
-      setThemeTailwind(systemTheme)
-      setThemeLocalStorage('system')
       return systemTheme
-    } else if (localStorage.theme === 'dark') {
-      setThemeTailwind('dark')
-      setThemeLocalStorage('dark')
+    } else if (loaderTheme === 'dark') {
       return 'dark'
     } else {
-      setThemeTailwind('light')
-      setThemeLocalStorage('light')
       return 'light'
     }
   })
 
-  const setTheme = (theme: supportedThemes) => {
+  const setTheme = (theme: keyof typeof THEMES) => {
     setThemeTailwind(theme)
-    setThemeLocalStorage(theme)
     setThemeLocal(theme)
+    persistTheme.submit({theme}, {action: 'action/theme', method: 'post'})
+    setAnimations(true)
   }
 
-  return (
-    <>
-      {theme === 'dark' ? (
-        <FiSun
-          size="1.5em"
-          title="light mode"
-          className="hover:text-highlight transition-color animate-pop"
-          onClick={() => setTheme('light')}
-        />
-      ) : (
-        <BsMoonStars
-          size="1.5em"
-          title="dark mode"
-          className="hover:text-highlight transition-color animate-pop"
-          onClick={() => setTheme('dark')}
-        />
-      )}
-    </>
+  return theme === 'dark' ? (
+    <button
+      onClick={() => setTheme('light')}
+      className="inline-flex items-center px-4"
+    >
+      <FiSun
+        size="1.5em"
+        title="light mode"
+        className={`hover:text-highlight transition-color ${
+          animations && 'animate-pop'
+        }`}
+      />
+    </button>
+  ) : (
+    <button
+      onClick={() => setTheme('dark')}
+      className="inline-flex items-center px-4"
+    >
+      <BsMoonStars
+        size="1.5em"
+        title="dark mode"
+        className={`hover:text-highlight transition-color ${
+          animations && 'animate-pop'
+        }`}
+      />
+    </button>
   )
 }
 
-function ThemeFallback() {
-  return (
-    <BsMoonStars
-      size="1.5em"
-      title="dark mode"
-      className="setThemeLocalStorage"
-    />
-  )
-}
-
-export {Theme, ThemeFallback}
+export {Theme}
