@@ -173,6 +173,7 @@ function NavBarMobile() {
                 height="2em"
                 viewBox="0 0 2em 2em"
                 fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <motion.rect
                   y="0.35em"
@@ -199,11 +200,6 @@ function NavBarMobile() {
                   variants={variants.mobileMenu.bottom}
                 />
               </motion.svg>
-              {/* <GiHamburgerMenu
-              size="2em"
-              title="logo to vilasp github"
-              className="hover:text-highlight transition-color"
-            /> */}
             </MenuButton>
             <NavBarMobileMenuList />
           </>
