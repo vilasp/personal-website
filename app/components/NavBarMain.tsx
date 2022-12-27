@@ -167,7 +167,7 @@ function NavBarMobile() {
         const state = isExpanded ? 'open' : 'closed'
         return (
           <>
-            <MenuButton>
+            <MenuButton className="hover:text-highlight">
               <motion.svg
                 width="2em"
                 height="2em"
