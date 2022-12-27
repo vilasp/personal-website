@@ -2,7 +2,6 @@ import {useEffect} from 'react'
 import {Link} from '@remix-run/react'
 import {Theme} from '../theme'
 import {AiFillGithub} from 'react-icons/ai'
-import {GiHamburgerMenu} from 'react-icons/gi'
 import {
   Menu,
   MenuItems,
@@ -28,8 +27,8 @@ const LINKS = {
   },
 }
 
-function NavBarSignature() {
-  const icon = {
+const variants = {
+  signature: {
     hidden: {
       opacity: 0,
       pathLength: 0,
@@ -46,8 +45,38 @@ function NavBarSignature() {
       strokeLinejoin: 'round',
       strokeLinecap: 'round',
     },
-  }
+  },
+  mobileMenu: {
+    top: {
+      closed: {
+        x: 0,
+        y: 0,
+      },
+      open: {
+        rotate: '45deg',
+        origin: 'center',
+        y: '0.65em',
+      },
+    },
+    middle: {
+      closed: {opacity: 1.0},
+      open: {opacity: 0.0},
+    },
+    bottom: {
+      closed: {
+        x: 0,
+        y: 0,
+      },
+      open: {
+        rotate: '-45deg',
+        origin: 'center',
+        y: '-0.5em',
+      },
+    },
+  },
+}
 
+function NavBarSignature() {
   return (
     <Link to="/" rel="index" className="flex-none w-16 mx-4 p-4">
       <motion.svg
@@ -57,7 +86,7 @@ function NavBarSignature() {
       >
         <motion.path
           d="M0 0 L30 100 L60 0 L90 100 M60 70 L60 80"
-          variants={icon}
+          variants={variants.signature}
           initial="hidden"
           animate="visible"
           transition={{
@@ -134,14 +163,52 @@ function NavBarMobileMenuList() {
 function NavBarMobile() {
   return (
     <Menu>
-      <MenuButton>
-        <GiHamburgerMenu
-          size="2em"
-          title="logo to vilasp github"
-          className="hover:text-highlight transition-color"
-        />
-      </MenuButton>
-      <NavBarMobileMenuList />
+      {({isExpanded}) => {
+        const state = isExpanded ? 'open' : 'closed'
+        return (
+          <>
+            <MenuButton>
+              <motion.svg
+                width="2em"
+                height="2em"
+                viewBox="0 0 2em 2em"
+                fill="none"
+              >
+                <motion.rect
+                  y="0.35em"
+                  height="0.15em"
+                  width="1.6em"
+                  fill="currentColor"
+                  animate={state}
+                  variants={variants.mobileMenu.top}
+                />
+                <motion.rect
+                  y="0.925em"
+                  height="0.15em"
+                  width="1.6em"
+                  fill="currentColor"
+                  animate={state}
+                  variants={variants.mobileMenu.middle}
+                />
+                <motion.rect
+                  y="1.5em"
+                  height="0.15em"
+                  width="1.6em"
+                  fill="currentColor"
+                  animate={state}
+                  variants={variants.mobileMenu.bottom}
+                />
+              </motion.svg>
+              {/* <GiHamburgerMenu
+              size="2em"
+              title="logo to vilasp github"
+              className="hover:text-highlight transition-color"
+            /> */}
+            </MenuButton>
+            <NavBarMobileMenuList />
+          </>
+        )
+      }}
     </Menu>
   )
 }
