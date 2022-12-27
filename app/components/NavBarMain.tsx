@@ -2,7 +2,6 @@ import {useEffect} from 'react'
 import {Link} from '@remix-run/react'
 import {Theme} from '../theme'
 import {AiFillGithub} from 'react-icons/ai'
-import {GiHamburgerMenu} from 'react-icons/gi'
 import {
   Menu,
   MenuItems,
