@@ -199,11 +199,6 @@ function NavBarMobile() {
                   variants={variants.mobileMenu.bottom}
                 />
               </motion.svg>
-              {/* <GiHamburgerMenu
-              size="2em"
-              title="logo to vilasp github"
-              className="hover:text-highlight transition-color"
-            /> */}
             </MenuButton>
             <NavBarMobileMenuList />
           </>
