@@ -55,7 +55,7 @@ const variants = {
       open: {
         rotate: '45deg',
         origin: 'center',
-        y: '0.65em',
+        y: '57.5px',
       },
     },
     middle: {
@@ -70,7 +70,7 @@ const variants = {
       open: {
         rotate: '-45deg',
         origin: 'center',
-        y: '-0.5em',
+        y: '-57.5px',
       },
     },
   },
@@ -171,30 +171,30 @@ function NavBarMobile() {
               <motion.svg
                 width="2em"
                 height="2em"
-                viewBox="0 0 2em 2em"
+                viewBox="0 0 200 200"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <motion.rect
-                  y="0.35em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="35"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.top}
                 />
                 <motion.rect
-                  y="0.925em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="92.5"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.middle}
                 />
                 <motion.rect
-                  y="1.5em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="150"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.bottom}
