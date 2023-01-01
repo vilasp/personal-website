@@ -143,7 +143,7 @@ function NavBarMobileMenuList() {
       })}
       style={{display: 'block'}}
     >
-      <MenuItems className="flex flex-col space-between px-4 py-2 divide-y-3">
+      <MenuItems className="flex flex-col space-between py-2 divide-y divide-current">
         {Object.values(LINKS).map(({name, href}) => (
           <MenuLink
             as={Link}
