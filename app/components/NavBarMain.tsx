@@ -143,14 +143,14 @@ function NavBarMobileMenuList() {
       })}
       style={{display: 'block'}}
     >
-      <MenuItems className="flex flex-col space-between py-2 divide-y divide-current">
+      <MenuItems className="flex flex-col space-between py-0 border-none divide-y divide-current">
         {Object.values(LINKS).map(({name, href}) => (
           <MenuLink
             as={Link}
             to={href}
             key={name}
             id={name}
-            className="p-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color"
+            className="bg-quaternary dark:bg-primary py-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color hover:bg-quaternary dark:hover:bg-primary"
           >
             {name}
           </MenuLink>
