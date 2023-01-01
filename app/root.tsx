@@ -9,9 +9,10 @@ import {
   useLoaderData,
 } from '@remix-run/react'
 import NavBarMain from './components/NavBarMain'
-import styles from './tailwind.css'
+import stylesTailwind from './tailwind.css'
 import {getSession} from './sessions'
 import type {THEMES} from './utils/theme'
+import stylesReach from '@reach/menu-button/styles.css'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -19,7 +20,10 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1',
 })
 
-export const links: LinksFunction = () => [{rel: 'stylesheet', href: styles}]
+export const links: LinksFunction = () => [
+  {rel: 'stylesheet', href: stylesReach},
+  {rel: 'stylesheet', href: stylesTailwind},
+]
 
 export type LoaderData = {
   theme: keyof typeof THEMES | null
