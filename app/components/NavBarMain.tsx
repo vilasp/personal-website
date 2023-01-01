@@ -143,19 +143,29 @@ function NavBarMobileMenuList() {
       })}
       style={{display: 'block'}}
     >
-      <MenuItems className="flex flex-col space-between py-0 border-none divide-y divide-current">
-        {Object.values(LINKS).map(({name, href}) => (
-          <MenuLink
-            as={Link}
-            to={href}
-            key={name}
-            id={name}
-            className="bg-quaternary dark:bg-primary py-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color hover:bg-quaternary dark:hover:bg-primary"
-          >
-            {name}
-          </MenuLink>
-        ))}
-      </MenuItems>
+      <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        transition={{
+          ease: 'linear',
+        }}
+        className="flex flex-col h-full overflow-y-scroll space-between py-0"
+      >
+        <MenuItems className="border-none bg-transparent p-0 divide-y divide-current">
+          {Object.values(LINKS).map(({name, href}) => (
+            <MenuLink
+              as={Link}
+              to={href}
+              key={name}
+              id={name}
+              className="bg-quaternary dark:bg-primary py-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color hover:bg-quaternary dark:hover:bg-primary"
+            >
+              {name}
+            </MenuLink>
+          ))}
+        </MenuItems>
+      </motion.div>
     </MenuPopover>
   ) : null
 }
