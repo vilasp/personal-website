@@ -55,7 +55,7 @@ const variants = {
       open: {
         rotate: '45deg',
         origin: 'center',
-        y: '0.65em',
+        y: '57.5px',
       },
     },
     middle: {
@@ -70,7 +70,7 @@ const variants = {
       open: {
         rotate: '-45deg',
         origin: 'center',
-        y: '-0.5em',
+        y: '-57.5px',
       },
     },
   },
@@ -143,19 +143,29 @@ function NavBarMobileMenuList() {
       })}
       style={{display: 'block'}}
     >
-      <MenuItems className="flex flex-col space-between px-4 py-2 divide-y-3">
-        {Object.values(LINKS).map(({name, href}) => (
-          <MenuLink
-            as={Link}
-            to={href}
-            key={name}
-            id={name}
-            className="p-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color"
-          >
-            {name}
-          </MenuLink>
-        ))}
-      </MenuItems>
+      <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        transition={{
+          ease: 'linear',
+        }}
+        className="flex flex-col h-full overflow-y-scroll space-between py-0"
+      >
+        <MenuItems className="border-none bg-transparent p-0 divide-y divide-current">
+          {Object.values(LINKS).map(({name, href}) => (
+            <MenuLink
+              as={Link}
+              to={href}
+              key={name}
+              id={name}
+              className="bg-quaternary dark:bg-primary py-4 uppercase hover:text-highlight font-sans uppercase font-semibold text-sm transition-color hover:bg-quaternary dark:hover:bg-primary"
+            >
+              {name}
+            </MenuLink>
+          ))}
+        </MenuItems>
+      </motion.div>
     </MenuPopover>
   ) : null
 }
@@ -171,30 +181,30 @@ function NavBarMobile() {
               <motion.svg
                 width="2em"
                 height="2em"
-                viewBox="0 0 2em 2em"
+                viewBox="0 0 200 200"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <motion.rect
-                  y="0.35em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="35"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.top}
                 />
                 <motion.rect
-                  y="0.925em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="92.5"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.middle}
                 />
                 <motion.rect
-                  y="1.5em"
-                  height="0.15em"
-                  width="1.6em"
+                  y="150"
+                  height="15"
+                  width="160"
                   fill="currentColor"
                   animate={state}
                   variants={variants.mobileMenu.bottom}
